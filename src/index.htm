@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script lang="javascript" src="//code.jquery.com/jquery-2.1.1.js"></script>
+
+</head>
+<body>
+Hi, I'll try to find your location...
+
+<div id="demo"></div>
+<div id="mapholder"></div>
+<script src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+
+<script>
+    (function() {
+
+        if(!!navigator.geolocation) {
+
+              navigator.geolocation.getCurrentPosition(function(position) {
+
+                showPosition(position);
+                  showPositionOnMap(position);
+
+            });
+
+        } else {
+            document.getElementById('demo').innerHTML = 'No Geolocation Support.';
+        }
+
+    })();
+
+    var x = document.getElementById("demo");
+
+    function showPosition(position) {
+        x.innerHTML = "Latitude: " + position.coords.latitude +
+                "<br>Longitude: " + position.coords.longitude;
+    }
+
+    function showPositionOnMap(position) {
+        var latlon = position.coords.latitude + "," + position.coords.longitude;
+
+        var img_url = "http://maps.googleapis.com/maps/api/staticmap?center="+latlon+"&zoom=14&size=400x300&sensor=false";
+
+        document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
+    }
+
+</script>
+</body>
+</html>
