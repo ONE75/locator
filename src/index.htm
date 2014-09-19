@@ -20,6 +20,100 @@ function getLocation() {
     } else { 
         x.innerHTML = "Geolocation is not supported by this browser.";}
 }
+ 
+// mapstyle provided by http://snazzymaps.com/
+var mapStyle = [
+    {
+        "featureType": "water",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "color": "#b5cbe4"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "stylers": [
+            {
+                "color": "#efefef"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#83a5b0"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#bdcdd3"
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.park",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#e3eed3"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "lightness": 33
+            }
+        ]
+    },
+    {
+        "featureType": "road"
+    },
+    {
+        "featureType": "poi.park",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "lightness": 20
+            }
+        ]
+    },
+    {},
+    {
+        "featureType": "road",
+        "stylers": [
+            {
+                "lightness": 20
+            }
+        ]
+    }
+];
 
 function showPosition(position) {
     lat = position.coords.latitude;
@@ -33,7 +127,8 @@ function showPosition(position) {
     center:latlon,zoom:16,
     mapTypeId:google.maps.MapTypeId.ROADMAP,
     mapTypeControl:false,
-    navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
+    navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL},
+	styles: mapStyle
     }
     
     var map = new google.maps.Map(document.getElementById("mapholder"),myOptions);
